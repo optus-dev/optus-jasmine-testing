@@ -1,11 +1,14 @@
-// Simple connect static server for testing
+/*global connect require __dirname console*/
+/**
+ * Simple connect static server for testing
+ */
 
-connect = require('connect');
+var middleware = require('connect');
 
-server = connect.createServer(
-    connect.favicon(),
-    connect.logger(),
-    connect['static'](__dirname)
+var server = middleware.createServer(
+    middleware.favicon(),
+    middleware.logger(),
+    middleware['static'](__dirname + '/public')
 );
 
 server.listen(3000);

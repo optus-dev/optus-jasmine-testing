@@ -1,3 +1,4 @@
+/*global describe expect it beforeEach afterEach sinon spyOn console*/
 /**
  * SM 08Nov12: Tests for the check user spec
  */
@@ -19,7 +20,7 @@ describe("Check user spec", function () {
         }
     };
 
-    function createHtml(options) {
+    function createHtml() {
         var out = [];
 
         out.push('<div class="fn-checkUserNameTest" data-url="' + checkUserServerUrl + '">');
