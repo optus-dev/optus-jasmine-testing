@@ -1,0 +1,17 @@
+{
+    "name": "Optus-Jasmine-Testing",
+    "description": "Demo for Jasmine unit testing for Optus.",
+    "version": "0.0.1",
+    "private": true,
+    "homepage": "http://optus.com.au",
+    "author": {
+        "name": "Scott Maclure",
+        "email": "scott@maclure.com.au"
+    },
+    "dependencies" : {
+        "grunt":  "*",
+        "grunt-jasmine-task": "*",
+        "connect": "*"
+    }
+}
+

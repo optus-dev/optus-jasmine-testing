@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Optus Jasmine Testing</title>
+
+        <style type="text/css">
+        .hidden {
+            display: none;
+        }
+        </style>
+
+    </head>
+    <body>
+
+        <h1>Check your username: success</h1>
+        <div class="fn-checkUserName" data-url="data/checkUserSuccess.json">
+            <input type="text" name="username" placeholder="username here bro">
+            <button class="checkUserButton">Check Username</button>
+            <div class="checkUserResult hidden"></div>
+        </div>
+
+        <h1>Check your username: 404</h1>
+        <div class="fn-checkUserName" data-url="data/some-404-yeh-yeh.json">
+            <input type="text" name="username" value="JustClickAlready">
+            <button class="checkUserButton">Check Username</button>
+            <div class="checkUserResult hidden"></div>
+        </div>
+
+        <!-- Not using CDN for presentation (no net possible) -->
+        <script src="javascripts/jquery.min.js"></script>
+        <script src="javascripts/checkUser.js"></script>
+
+    </body>
+</html>
