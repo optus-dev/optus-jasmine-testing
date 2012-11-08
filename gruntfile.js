@@ -41,6 +41,16 @@ module.exports = function(grunt) {
                 src: [ 'http://localhost:3000/jasmine/SpecRunner.html' ],
                 errorReporting: true
             }
+        },
+
+        /**
+         * Run grunt in watch mode for automated goodness
+         */
+         watch: {
+            scripts: {
+                files: '<config:lint.all>',
+                tasks: 'lint jasmine'
+            }
         }
 
     });
