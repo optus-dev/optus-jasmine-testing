@@ -70,9 +70,8 @@ describe("Check user spec", function () {
         expect(plugin.constructor.name).toBe("CheckUser");
     });
 
-    it("will have a hidden results element", function () {
+    it("will have a hidden class on the results element", function () {
         var $resultElem = $elem.find(".checkUserResult");
-        expect($resultElem.is(":visible")).toBe(true);
         expect($resultElem.hasClass("hidden")).toBe(true);
     });
 
