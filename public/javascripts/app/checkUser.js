@@ -12,17 +12,20 @@
 
         // Override default options
         this.options = $.extend({
-            serverError: "Error: Cannot communicate with server."
+            serverError: "Error: Cannot communicate with server.",
+            inputValidCss: 'inputValid',
+            inputInvalidCss: 'inputInvalid'
         }, options);
 
         // Cache element references
-        this.$elem      = $(elem);
-        this.$input     = this.$elem.find("input[name=username]");
-        this.$button    = this.$elem.find(".checkUserButton");
-        this.$results   = this.$elem.find(".checkUserResult");
+        this.$elem       = $(elem);
+        this.$input      = this.$elem.find("input[name=username]");
+        this.$button     = this.$elem.find(".checkUserButton");
+        this.$resultElem = this.$elem.find(".checkUserResult");
 
         // Server XHR url
-        this.dataUrl = this.$elem.attr('data-url');
+        // SM 09Nov12: Don't cache this, to keep plugin flexible
+        //this.dataUrl = this.$elem.attr('data-url');
 
         // Bind to events etc
         this.init();
@@ -51,27 +54,40 @@
                 return;
             }
 
-            console.log("doCheck userName:", userName);
+            // Dynamically get the url each time, to allow us to change the value on the fly
+            var dataUrl = this.$elem.attr('data-url');
 
             // Note for future: success, error, complete -> done, fail, always
+            // Note: Must proxy to keep 'this' in scope
 
             $.ajax({
                 type: "GET",
-                url: this.dataUrl,
+                url: dataUrl,
                 data: { userName: userName },
                 dataType: "json"
             })
-            .success(this.doCheckSuccess)
-            .error(this.doCheckError);
+            .done($.proxy(this.doCheckDone, this))
+            .fail($.proxy(this.doCheckFail, this));
 
         },
 
-        doCheckSuccess: function (data) {
-            console.log("doCheckSuccess data:", data);
+        doCheckDone: function (jsonData) {
+            console.log("doCheckError done jsonData:", jsonData);
+            if (jsonData.success) {
+                if (jsonData.data.availableUsername) {
+                    this.$resultElem.addClass("hidden");
+                    this.$input.removeClass(this.options.inputInvalidCss).addClass(this.options.inputValidCss);
+                } else {
+                    // TODO Username is not available
+                }
+            } else {
+                // TODO System failed to check either way
+            }
         },
 
-        doCheckError: function (data) {
-            console.log("doCheckError data:", data);
+        doCheckFail: function (xhr, status) {
+            console.log("doCheckError fail xhr:", xhr, "status", status);
+            this.$input.removeClass(this.inputValidCss).addClass(this.inputInvalidCss);
         }
 
     });

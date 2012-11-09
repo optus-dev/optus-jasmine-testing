@@ -5,30 +5,44 @@
         <title>Optus Jasmine Testing</title>
 
         <style type="text/css">
-        .hidden {
-            display: none;
-        }
+            .hidden {
+                display: none;
+            }
+            .inputValid {
+                border: 1px solid green;
+                background-color: GreenYellow;
+            }
         </style>
 
     </head>
     <body>
 
-        <h1>Check your username: success</h1>
+        <h1>Check your username</h1>
         <div class="fn-checkUserName" data-url="data/checkUserSuccess.json">
+            
             <input type="text" name="username" placeholder="username here bro">
+            
             <button class="checkUserButton">Check Username</button>
+            
+            <input id="dataUrlSuccess" type="radio" name="dataUrlChanger" class="fn-dataAttributeSetter" data-target=".fn-checkUserName" data-name="data-url" data-value="data/checkUserSuccess.json" checked="checked"><label for="dataUrlSuccess">Success</label>
+            <input id="dataUrlFailure" type="radio" name="dataUrlChanger" class="fn-dataAttributeSetter" data-target=".fn-checkUserName" data-name="data-url" data-value="data/checkUserFailure.json"><label for="dataUrlFailure">Failure</label>
+            <input id="dataUrlError" type="radio" name="dataUrlChanger" class="fn-dataAttributeSetter" data-target=".fn-checkUserName" data-name="data-url" data-value="data/firjoejofe/404"><label for="dataUrlError">Error</label>
+            
             <div class="checkUserResult hidden"></div>
         </div>
 
+        <!--
         <h1>Check your username: 404</h1>
         <div class="fn-checkUserName" data-url="data/some-404-yeh-yeh.json">
             <input type="text" name="username" value="JustClickAlready">
             <button class="checkUserButton">Check Username</button>
             <div class="checkUserResult hidden"></div>
         </div>
+        -->
 
         <!-- Not using CDN for presentation (no net possible) -->
         <script src="javascripts/ext/jquery.min.js"></script>
+        <script src="javascripts/app/dataAttributeSetter.js"></script>
         <script src="javascripts/app/checkUser.js"></script>
 
     </body>

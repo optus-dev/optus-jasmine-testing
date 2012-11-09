@@ -1,0 +1,26 @@
+check user spec
+
+	when plugin is initially bound
+		will have the plugin bound to the element
+		will have a hidden class on the results element
+
+	when no username is entered
+		sends NO request to the server
+
+	when any username is entered
+		will call doCheck
+		will send a request to the server
+		
+	when a valid, unique username is entered
+		will not display the results element
+
+	when a username that's already taken is entered
+		will highlight the input box red
+		will display alternative suggestions in the results element
+
+		when the username is changed to a valid username
+			will replace the invalid highlight with valid
+			will hide the suggestions
+
+	when the server responds with an HTTP error (404, 500, etc)
+		shows an error message in the results element

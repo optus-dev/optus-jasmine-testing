@@ -1,0 +1,11 @@
+{ 
+    "success": true,
+    "data": {
+        "availableUsername": false,
+        "alternatives": [
+            "Hall",
+            "Walker",
+            "Taylor"
+        ]
+    }
+}
