@@ -1,7 +1,6 @@
 /*global console*/
 /**
  * SM 08Nov12: Example "checkUser" style plugin.
- * Note: For shop, will be jQuery 1.6 compatible.
  */
 (function(window, undefined) {
 
