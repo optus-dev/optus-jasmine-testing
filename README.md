@@ -9,7 +9,8 @@ git
 
 ## Install
 
-- git clone git@bitbucket.org:scottos/optus-jasmine-testing.git
+Clone and then from that folder:
+
 - sudo npm install -g grunt
 - npm install
 
